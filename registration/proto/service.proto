@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package service;
+
+option go_package="github.com/leplasmo/chaman/registration/pb";
+
+service RegistrationService {
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {};
+}
+
+message RegisterUserRequest {
+  string email = 1;
+}
+
+message RegisterUserResponse {
+  string id = 1;
+  StatusCode status = 2;
+}
+
+enum StatusCode {
+  UNKNOWN = 0;
+  SUCCESS = 1;
+  FAILURE = 2;
+}
